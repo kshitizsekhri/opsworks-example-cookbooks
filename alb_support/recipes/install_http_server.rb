@@ -23,16 +23,47 @@
 # end
 package "epel-release" do
   action :install
-  only_if { node[:platform] == "centos" }
+#   only_if { node[:platform] == "centos" }
 end
 
-apt_package "vim" do
- action :install
+execute "sudo yum update" do
+ command "sudo yum update"
 end
 
-execute "apt-get update" do
- command "apt-get update"
+
+execute "sudo yum install httpd" do
+ command "sudo yum install httpd"
 end
+
+# sudo yum install httpd
+# package "httpd" do
+#   action :install
+# #   only_if { node[:platform] == "centos" }
+# end
+# package 'Install Apache' do
+#   case node[:platform]
+#   when 'centos'
+#     package_name 'httpd'
+#   when 'ubuntu', 'debian'
+#     package_name 'apache2'
+#   end
+#   action :install
+# #   action [:create, :start]
+# end
+
+# httpd_service 'default' do
+#   action [:create, :start]
+# end
+
+# httpd_config 'default' do
+#   source 'mysite.cnf.erb'
+#   notifies :restart, 'httpd_service[default]'
+#   action :create
+# end
+
+# apt_package "vim" do
+#  action :install
+# end
 
 # package "apache2" do
 #   action :install
