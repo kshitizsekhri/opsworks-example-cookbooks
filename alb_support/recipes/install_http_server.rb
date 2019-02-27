@@ -19,11 +19,3 @@ package "epel-release" do
   action :install
   only_if { node[:platform] == "centos" }
 end
-
-package "nginx" do
-  action :install
-end
-
-service "nginx" do
-  action [:enable, :start]
-end
