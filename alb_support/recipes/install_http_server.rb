@@ -21,14 +21,14 @@
 #    command "apt-get update"
 #  end
 # end
-# package "epel-release" do
-#   action :install
-#   only_if { node[:platform] == "centos" }
-# end
-
-apt_package "vim" do
- action :install
+package "epel-release" do
+  action :install
+  only_if { node[:platform] == "centos" }
 end
+
+# apt_package "vim" do
+#  action :install
+# end
 
 # execute "apt-get update" do
 #  command "apt-get update"
