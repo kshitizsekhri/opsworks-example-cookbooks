@@ -26,9 +26,9 @@ package "epel-release" do
   only_if { node[:platform] == "centos" }
 end
 
-execute "apt-get update" do
- command "apt-get update"
-end
+# execute "apt-get update" do
+#  command "apt-get update"
+# end
 
 # package "apache2" do
 #   action :install
