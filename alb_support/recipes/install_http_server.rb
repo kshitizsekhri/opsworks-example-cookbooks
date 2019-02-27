@@ -23,17 +23,21 @@
 # end
 package "epel-release" do
   action :install
-#   only_if { node[:platform] == "centos" }
+  only_if { node[:platform] == "centos" }
+end
+package "httpd" do
+  action :install
+  only_if { node[:platform] == "centos" }
 end
 
-execute "sudo yum update" do
- command "sudo yum update"
-end
+# execute "sudo yum update" do
+#  command "sudo yum update"
+# end
 
 
-execute "sudo yum install httpd" do
- command "sudo yum install httpd"
-end
+# execute "sudo yum install httpd" do
+#  command "sudo yum install httpd"
+# end
 
 # sudo yum install httpd
 # package "httpd" do
