@@ -15,6 +15,12 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
+
+# if node['platform'] == 'centos' || node['platform'] == 'ubuntu'
+#  execute "apt-get update" do
+#    command "apt-get update"
+#  end
+# end
 package "epel-release" do
   action :install
   only_if { node[:platform] == "centos" }
