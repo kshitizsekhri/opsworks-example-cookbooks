@@ -26,13 +26,13 @@ package "epel-release" do
   only_if { node[:platform] == "centos" }
 end
 
-# apt_package "vim" do
-#  action :install
-# end
+apt_package "vim" do
+ action :install
+end
 
-# execute "apt-get update" do
-#  command "apt-get update"
-# end
+execute "apt-get update" do
+ command "apt-get update"
+end
 
 # package "apache2" do
 #   action :install
