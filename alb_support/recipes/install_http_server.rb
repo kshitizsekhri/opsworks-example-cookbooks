@@ -77,3 +77,12 @@ end
 execute "sudo setsebool httpd_can_network_connect_db 1" do
   command "sudo setsebool httpd_can_network_connect_db 1"
 end
+execute "sudo setsebool -P httpd_unified 1" do
+  command "sudo setsebool -P httpd_unified 1"
+end
+execute "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/" do
+  command "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/"
+end
+execute "sudo vim /etc/httpd/conf/httpd.conf" do
+  command "sudo vim /etc/httpd/conf/httpd.conf"
+end
