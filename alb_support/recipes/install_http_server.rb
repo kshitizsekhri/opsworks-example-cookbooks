@@ -48,9 +48,6 @@ end
 execute "sudo yum -y install vim" do
   command "sudo yum -y install vim"
 end
-execute "sudo yum -y install vim" do
-  command "sudo yum -y install vim"
-end
 execute "sudo yum -y install nano" do
   command "sudo yum -y install nano"
 end
