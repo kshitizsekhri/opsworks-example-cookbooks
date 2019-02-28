@@ -36,6 +36,15 @@ end
 execute "sudo yum -y install httpd" do
   command "sudo yum -y install httpd"
 end
+execute "sudo systemctl start httpd.service" do
+  command "sudo systemctl start httpd.service"
+end
+execute "sudo systemctl enable httpd.service" do
+  command "sudo systemctl enable httpd.service"
+end
+execute "sudo yum -y install git" do
+  command "sudo yum -y install git"
+end
 # apt_package "httpd" do
 #  action :install
 # end
