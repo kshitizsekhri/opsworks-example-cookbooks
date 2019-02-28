@@ -33,10 +33,12 @@
 execute "sudo yum update" do
   command "sudo yum update"
 end
-
-apt_package "httpd" do
- action :install
+execute "sudo yum install httpd" do
+  command "sudo yum install httpd"
 end
+# apt_package "httpd" do
+#  action :install
+# end
 
 # execute "sudo yum install httpd" do
 #  command "sudo yum install httpd"
