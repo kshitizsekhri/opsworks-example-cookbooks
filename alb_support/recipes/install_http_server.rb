@@ -32,12 +32,15 @@ execute "sudo yum -y install git" do
 end
 execute "sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm" do
   command "sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+  ignore_failure true
 end
 execute "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" do
   command "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+  ignore_failure true
 end
 execute "sudo yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml php71w-intl" do
   command "sudo yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml php71w-intl"
+  ignore_failure true
 end
 execute "sudo cp /etc/php.ini /etc/php.ini.bak" do
   command "sudo cp /etc/php.ini /etc/php.ini.bak"
@@ -47,21 +50,23 @@ execute "sudo systemctl restart httpd.service" do
 end
 execute "sudo yum -y install vim" do
   command "sudo yum -y install vim"
+  ignore_failure true
 end
 execute "sudo yum -y install nano" do
   command "sudo yum -y install nano"
+  ignore_failure true
 end
-execute "php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"" do
-  command "php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');""
+execute "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\"" do
+  command "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\""
 end
-execute "php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"" do
-  command "php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;""
+execute "php -r \"if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;\"" do
+  command "php -r \"if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;\""
 end
 execute "php composer-setup.php" do
   command "php composer-setup.php"
 end
-execute "php -r "unlink('composer-setup.php');"" do
-  command "php -r "unlink('composer-setup.php');""
+execute "php -r \"unlink('composer-setup.php');\"" do
+  command "php -r \"unlink('composer-setup.php');\""
 end
 execute "sudo mv composer.phar /usr/local/bin/composer" do
   command "sudo mv composer.phar /usr/local/bin/composer"
