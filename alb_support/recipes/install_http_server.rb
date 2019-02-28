@@ -80,9 +80,13 @@ end
 execute "sudo setsebool -P httpd_unified 1" do
   command "sudo setsebool -P httpd_unified 1"
 end
-execute "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/" do
-  command "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/"
-end
+# execute "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/" do
+#   command "chcon unconfined_u:object_r:httpd_sys_rw_content_t:s0 webroot/"
+# end
 execute "sudo vim /etc/httpd/conf/httpd.conf" do
   command "sudo vim /etc/httpd/conf/httpd.conf"
 end
+execute "sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/httpd/conf/httpd.conf" do
+  command "sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride all/' /etc/httpd/conf/httpd.conf"
+end
+
