@@ -30,10 +30,10 @@
 #   only_if { node[:platform] == "centos" }
 # end
 
-execute "sudo yum update" do
-  command "sudo yum update"
+execute "sudo yum -y update" do
+  command "sudo yum -y update"
 end
-execute "sudo yum install httpd" do
+execute "sudo yum -y install httpd" do
   command "sudo yum -y install httpd"
 end
 # apt_package "httpd" do
