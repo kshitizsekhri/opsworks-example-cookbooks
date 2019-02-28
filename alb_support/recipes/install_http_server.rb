@@ -15,21 +15,6 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 #
-
-# if node['platform'] == 'centos' || node['platform'] == 'ubuntu'
-#  execute "apt-get update" do
-#    command "apt-get update"
-#  end
-# end
-# package "epel-release" do
-#   action :install
-#   only_if { node[:platform] == "centos" }
-# end
-# package "httpd" do
-#   action :install
-#   only_if { node[:platform] == "centos" }
-# end
-
 execute "sudo yum -y update" do
   command "sudo yum -y update"
 end
@@ -45,48 +30,27 @@ end
 execute "sudo yum -y install git" do
   command "sudo yum -y install git"
 end
-# apt_package "httpd" do
-#  action :install
-# end
-
-# execute "sudo yum install httpd" do
-#  command "sudo yum install httpd"
-# end
-
-# sudo yum install httpd
-# package "httpd" do
-#   action :install
-# #   only_if { node[:platform] == "centos" }
-# end
-# package 'Install Apache' do
-#   case node[:platform]
-#   when 'centos'
-#     package_name 'httpd'
-#   when 'ubuntu', 'debian'
-#     package_name 'apache2'
-#   end
-#   action :install
-# #   action [:create, :start]
-# end
-
-# httpd_service 'default' do
-#   action [:create, :start]
-# end
-
-# httpd_config 'default' do
-#   source 'mysite.cnf.erb'
-#   notifies :restart, 'httpd_service[default]'
-#   action :create
-# end
-
-# apt_package "vim" do
-#  action :install
-# end
-
-# package "apache2" do
-#   action :install
-# end
-
-# service "apache2" do
-#   action [:enable, :start]
-# end
+execute "sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm" do
+  command "sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+end
+execute "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" do
+  command "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+end
+execute "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" do
+  command "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+end
+execute "sudo yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml php71w-intl" do
+  command "sudo yum install -y mod_php71w php71w-cli php71w-common php71w-gd php71w-mbstring php71w-mcrypt php71w-mysqlnd php71w-xml php71w-intl"
+end
+execute "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" do
+  command "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+end
+execute "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm" do
+  command "sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+end
+execute "sudo setsebool httpd_can_network_connect 1" do
+  command "setsebool httpd_can_network_connect 1"
+end
+execute "sudo setsebool httpd_can_network_connect_db 1" do
+  command "setsebool httpd_can_network_connect_db 1"
+end
